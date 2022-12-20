@@ -75,7 +75,7 @@
       *        Fill the number with zeroes (e.g. 00000)
                MOVE ZEROES TO SNACK(S)
       *        Shift it to the right by one
-               MOVE NUM-BUFFER(1:4) TO SNACK(S)(2:4)
+               MOVE NUM-BUFFER TO SNACK(S)(2:4)
              END-IF
 
              ADD 1 TO S
@@ -122,4 +122,3 @@
        ALL-FINISHED.
            STOP RUN.
       *END-ALL-FINISHED
-      
