@@ -1,6 +1,15 @@
+# Binaries
 *
+
+# Allow extensions
 !/**/
 !*.*
 
-!*.cob
+# Problem inputs
+*/data/
 *.txt
+*.json
+
+# Misc
+misc/
+*_2.*

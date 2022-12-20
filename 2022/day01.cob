@@ -5,10 +5,11 @@
          INPUT-OUTPUT SECTION.
            FILE-CONTROL.
       *    Define our input file
-           SELECT INPUT-FILE ASSIGN TO "data.txt"
+           SELECT INPUT-FILE ASSIGN TO "data/day01.txt"
              ORGANIZATION IS LINE SEQUENTIAL.
 
        DATA DIVISION.
+
          FILE SECTION.
          FD INPUT-FILE.
       *  Make a data structure to house our elfs
@@ -24,7 +25,7 @@
            02 CALORIES PIC 9(5) VALUE 0.
 
          01 SNACK-PILE OCCURS 247 TIMES.
-           03 TOTAL PIC 9(5) VALUE 0.
+           02 TOTAL PIC 9(5) VALUE 0.
 
          01 RUNNING_TOTAL PIC 9(5) VALUE 0.
 
@@ -53,7 +54,7 @@
            PERFORM READ-ELF UNTIL EOF = "Y".
            CLOSE INPUT-FILE.
 
-      *    PERFORM PRINT-SNACKS VARYING S FROM 1 BY 1 UNTIL S = 2247.
+      *   PERFORM PRINT-SNACKS VARYING S FROM 1 BY 1 UNTIL S = 2247.
            PERFORM BUILD-PILES.
       *    PERFORM PRINT-TOTALS VARYING T FROM 1 BY 1 UNTIL T = 248.
            PERFORM FIND-TOP-THREE.
@@ -82,13 +83,10 @@
            END-IF.
 
        BUILD-PILES.
-           MOVE 1 TO T.
-           MOVE 0 TO RUNNING_TOTAL.
            PERFORM VARYING S FROM 1 BY 1 UNTIL S = 2248
              IF CALORIES(S) GREATER 0 THEN
                ADD CALORIES(S) TO RUNNING_TOTAL
              ELSE
-               MOVE 0 TO TOTAL(T)
                ADD RUNNING_TOTAL TO TOTAL(T)
                ADD 1 TO T
                MOVE 0 TO RUNNING_TOTAL
@@ -121,4 +119,3 @@
 
        ALL-FINISHED.
            STOP RUN.
-      *END-ALL-FINISHED
